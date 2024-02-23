@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>2. Djangoの開発環境構築 &mdash; MyDocs 1.0 ドキュメント</title>
+  <title>1. Djangoの開発環境構築 &mdash; MyDocs 1.0 ドキュメント</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
 
@@ -23,7 +23,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="索引" href="genindex.html" />
     <link rel="search" title="検索" href="search.html" />
-    <link rel="prev" title="1. バージョン情報" href="version.html" /> 
+    <link rel="next" title="2. Vueの開発環境構築" href="vue.html" />
+    <link rel="prev" title="Docker" href="docker.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,21 +52,22 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="docker.html">Docker</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="version.html">1. バージョン情報</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">2. Djangoの開発環境構築</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">2.1. 概要</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id2">2.1.1. フォルダとファイルを作成する</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#dockerfile">2.1.2. Dockerfileを記述する</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#docker-compose-yml">2.1.3. docker-compose.ymlを記述する</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">2.1.4. コンテナのビルドと起動</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">2.1.5. コンテナの終了</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">2.1.6. 再ビルドを行う</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. Djangoの開発環境構築</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1.1. 概要</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.2. フォルダとファイルを作成する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dockerfile">1.3. Dockerfileを記述する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#docker-compose-yml">1.4. docker-compose.ymlを記述する</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">1.5. コンテナのビルドと起動</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">1.6. コンテナの起動</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">1.7. コンテナの終了</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">1.8. 再ビルドを行う</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="vue.html">2. Vueの開発環境構築</a></li>
 </ul>
 </li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="ubuntu.html">Ubuntu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="version.html">バージョン情報</a></li>
 </ul>
 
         </div>
@@ -83,7 +85,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="docker.html">Docker</a></li>
-      <li class="breadcrumb-item active"><span class="section-number">2. </span>Djangoの開発環境構築</li>
+      <li class="breadcrumb-item active"><span class="section-number">1. </span>Djangoの開発環境構築</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/django.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,16 +96,17 @@
            <div itemprop="articleBody">
              
   <section id="django">
-<h1><span class="section-number">2. </span>Djangoの開発環境構築<a class="headerlink" href="#django" title="この見出しへのパーマリンク"></a></h1>
+<h1><span class="section-number">1. </span>Djangoの開発環境構築<a class="headerlink" href="#django" title="この見出しへのパーマリンク"></a></h1>
 <section id="id1">
-<h2><span class="section-number">2.1. </span>概要<a class="headerlink" href="#id1" title="この見出しへのパーマリンク"></a></h2>
+<h2><span class="section-number">1.1. </span>概要<a class="headerlink" href="#id1" title="この見出しへのパーマリンク"></a></h2>
 <ul class="simple">
 <li><p>DockerでDjangoの環境を構築する際の手順</p></li>
 <li><p>PostgreSQLも同時に作成し起動する</p></li>
 <li><p>requirements.txtで必要なモジュールを記述</p></li>
 </ul>
+</section>
 <section id="id2">
-<h3><span class="section-number">2.1.1. </span>フォルダとファイルを作成する<a class="headerlink" href="#id2" title="この見出しへのパーマリンク"></a></h3>
+<h2><span class="section-number">1.2. </span>フォルダとファイルを作成する<a class="headerlink" href="#id2" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">code</span>
 <span class="n">touch</span> <span class="n">Dockerfile</span>
 <span class="n">touch</span> <span class="n">docker</span><span class="o">-</span><span class="n">compose</span><span class="o">.</span><span class="n">yml</span>
@@ -111,7 +114,7 @@
 </div>
 </section>
 <section id="dockerfile">
-<h3><span class="section-number">2.1.2. </span>Dockerfileを記述する<a class="headerlink" href="#dockerfile" title="この見出しへのパーマリンク"></a></h3>
+<h2><span class="section-number">1.3. </span>Dockerfileを記述する<a class="headerlink" href="#dockerfile" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">FROM</span> <span class="n">python</span><span class="p">:</span><span class="mi">3</span>
 <span class="linenos">2</span><span class="n">ENV</span> <span class="n">PYTHONUNBUFFERED</span> <span class="mi">1</span>
 <span class="linenos">3</span><span class="n">RUN</span> <span class="n">mkdir</span> <span class="o">/</span><span class="n">code</span>
@@ -130,7 +133,7 @@
 </div>
 </section>
 <section id="docker-compose-yml">
-<h3><span class="section-number">2.1.3. </span>docker-compose.ymlを記述する<a class="headerlink" href="#docker-compose-yml" title="この見出しへのパーマリンク"></a></h3>
+<h2><span class="section-number">1.4. </span>docker-compose.ymlを記述する<a class="headerlink" href="#docker-compose-yml" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">version</span><span class="p">:</span> <span class="s1">&#39;3&#39;</span>
 <span class="linenos"> 2</span><span class="n">services</span><span class="p">:</span>
 <span class="linenos"> 3</span><span class="n">db</span><span class="p">:</span>
@@ -175,25 +178,25 @@
 </div>
 </section>
 <section id="id3">
-<h3><span class="section-number">2.1.4. </span>コンテナのビルドと起動<a class="headerlink" href="#id3" title="この見出しへのパーマリンク"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+<h2><span class="section-number">1.5. </span>コンテナのビルドと起動<a class="headerlink" href="#id3" title="この見出しへのパーマリンク"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">build</span>
 </pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">注釈</p>
-<ul class="simple">
-<li><p>起動とビルドを同時に行う</p></li>
-</ul>
 </div>
 </section>
 <section id="id4">
-<h3><span class="section-number">2.1.5. </span>コンテナの終了<a class="headerlink" href="#id4" title="この見出しへのパーマリンク"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">down</span>
+<h2><span class="section-number">1.6. </span>コンテナの起動<a class="headerlink" href="#id4" title="この見出しへのパーマリンク"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
 </pre></div>
 </div>
 </section>
 <section id="id5">
-<h3><span class="section-number">2.1.6. </span>再ビルドを行う<a class="headerlink" href="#id5" title="この見出しへのパーマリンク"></a></h3>
+<h2><span class="section-number">1.7. </span>コンテナの終了<a class="headerlink" href="#id5" title="この見出しへのパーマリンク"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">down</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.8. </span>再ビルドを行う<a class="headerlink" href="#id6" title="この見出しへのパーマリンク"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">build</span>
 </pre></div>
 </div>
@@ -205,13 +208,13 @@
 </div>
 </section>
 </section>
-</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="version.html" class="btn btn-neutral float-left" title="1. バージョン情報" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="docker.html" class="btn btn-neutral float-left" title="Docker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="vue.html" class="btn btn-neutral float-right" title="2. Vueの開発環境構築" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

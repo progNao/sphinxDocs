@@ -1,4 +1,4 @@
-Docker
+Ubuntu
 ==================================
 
 .. toctree::
@@ -6,8 +6,4 @@ Docker
    :numbered:
    :glob:
 
-   django
-
-   vue
-
-   react
+   rails

@@ -6,5 +6,8 @@ Docker
    :numbered:
    :glob:
 
-   version
    django
+
+   vue
+
+   react
