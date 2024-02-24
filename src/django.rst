@@ -75,7 +75,7 @@ docker-compose.ymlを記述する
    * depends_onでdbを接続
    * volumesでdb-dataというコンテナ名でデータを永続化
 
-コンテナのビルドと起動
+コンテナのビルド
 ----------------------------------
 .. code-block::
 
